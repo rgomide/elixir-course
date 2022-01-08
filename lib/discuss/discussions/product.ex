@@ -1,16 +1,16 @@
-defmodule Discuss.Discussions.Topic do
+defmodule Discuss.Discussions.Product do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "topics" do
+  schema "products" do
     field :title, :string
 
     timestamps()
   end
 
   @doc false
-  def changeset(topic, attrs) do
-    topic
+  def changeset(product, attrs) do
+    product
     |> cast(attrs, [:title])
     |> validate_required([:title])
   end

@@ -6,99 +6,99 @@ defmodule Discuss.Discussions do
   import Ecto.Query, warn: false
   alias Discuss.Repo
 
-  alias Discuss.Discussions.Topic
+  alias Discuss.Discussions.Product
 
   @doc """
-  Returns the list of topics.
+  Returns the list of products.
 
   ## Examples
 
-      iex> list_topics()
-      [%Topic{}, ...]
+      iex> list_products()
+      [%Product{}, ...]
 
   """
-  def list_topics do
-    Repo.all(Topic)
+  def list_products do
+    Repo.all(Product)
   end
 
   @doc """
-  Gets a single topic.
+  Gets a single product.
 
-  Raises `Ecto.NoResultsError` if the Topic does not exist.
+  Raises `Ecto.NoResultsError` if the Product does not exist.
 
   ## Examples
 
-      iex> get_topic!(123)
-      %Topic{}
+      iex> get_product!(123)
+      %Product{}
 
-      iex> get_topic!(456)
+      iex> get_product!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_topic!(id), do: Repo.get!(Topic, id)
+  def get_product!(id), do: Repo.get!(Product, id)
 
   @doc """
-  Creates a topic.
+  Creates a product.
 
   ## Examples
 
-      iex> create_topic(%{field: value})
-      {:ok, %Topic{}}
+      iex> create_product(%{field: value})
+      {:ok, %Product{}}
 
-      iex> create_topic(%{field: bad_value})
+      iex> create_product(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_topic(attrs \\ %{}) do
-    %Topic{}
-    |> Topic.changeset(attrs)
+  def create_product(attrs \\ %{}) do
+    %Product{}
+    |> Product.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a topic.
+  Updates a product.
 
   ## Examples
 
-      iex> update_topic(topic, %{field: new_value})
-      {:ok, %Topic{}}
+      iex> update_product(product, %{field: new_value})
+      {:ok, %Product{}}
 
-      iex> update_topic(topic, %{field: bad_value})
+      iex> update_product(product, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_topic(%Topic{} = topic, attrs) do
-    topic
-    |> Topic.changeset(attrs)
+  def update_product(%Product{} = product, attrs) do
+    product
+    |> Product.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a topic.
+  Deletes a product.
 
   ## Examples
 
-      iex> delete_topic(topic)
-      {:ok, %Topic{}}
+      iex> delete_product(product)
+      {:ok, %Product{}}
 
-      iex> delete_topic(topic)
+      iex> delete_product(product)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_topic(%Topic{} = topic) do
-    Repo.delete(topic)
+  def delete_product(%Product{} = product) do
+    Repo.delete(product)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking topic changes.
+  Returns an `%Ecto.Changeset{}` for tracking product changes.
 
   ## Examples
 
-      iex> change_topic(topic)
-      %Ecto.Changeset{data: %Topic{}}
+      iex> change_product(product)
+      %Ecto.Changeset{data: %Product{}}
 
   """
-  def change_topic(%Topic{} = topic, attrs \\ %{}) do
-    Topic.changeset(topic, attrs)
+  def change_product(%Product{} = product, attrs \\ %{}) do
+    Product.changeset(product, attrs)
   end
 end

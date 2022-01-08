@@ -1,0 +1,22 @@
+<h5>Topics</h5>
+
+<ul class="collection">
+<%= for product <- @products do %>
+  <li class="collection-item">
+    <%= if @conn.assigns.user do %>
+      <%= link product.title, to: Routes.product_path(@conn, :show, product) %>
+      <div class="right">
+        <%= link "Edit", to: Routes.product_path(@conn, :edit, product) %>
+        <%= link "Delete", to: Routes.product_path(@conn, :delete, product), method: :delete %>
+      </div>
+    <% end %>
+  </li>    
+<% end %>
+</ul>
+
+  
+<div class="fixed-action-btn">
+  <%= link to: Routes.product_path(@conn, :new), class: "btn-floating btn-large waves-efect waves-light red" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+</div>
