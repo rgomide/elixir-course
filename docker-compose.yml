@@ -1,0 +1,29 @@
+version: '3.6'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: /bin/bash -c 'mix ecto.migrate && mix phx.server'
+    environment:
+      MIX_ENV: dev
+      DATABASE_URL: postgres://postgres:postgres@channelspikedb:5432/discuss_dev
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/app
+      - /app/deps/
+
+  channelspikedb:
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    image: 'postgres:11-alpine'
+    ports:
+      - '5433:5432'
+    restart: always
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
