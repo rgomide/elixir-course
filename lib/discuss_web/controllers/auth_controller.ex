@@ -20,6 +20,7 @@ defmodule DiscussWeb.AuthController do
         |> put_flash(:info, "Welcome back!")
         |> put_session(:user_id, user.id)
         |> redirect(to: Routes.topic_path(conn, :index))
+
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Error signing in")
@@ -37,6 +38,7 @@ defmodule DiscussWeb.AuthController do
     case Repo.get_by(User, email: changeset.changes.email) do
       nil ->
         Repo.insert(changeset)
+
       user ->
         {:ok, user}
     end
