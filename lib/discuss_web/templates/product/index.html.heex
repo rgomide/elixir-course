@@ -1,4 +1,4 @@
-<h5>Topics</h5>
+<h5>Products</h5>
 
 <ul class="collection">
 <%= for product <- @products do %>
@@ -20,3 +20,5 @@
     <i class="material-icons">add</i>
   <% end %>
 </div>
+
+<span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>

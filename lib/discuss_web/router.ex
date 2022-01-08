@@ -25,7 +25,8 @@ defmodule DiscussWeb.Router do
     # put "/topics/:id", TopicController, :update
     # delete "/topics/:id", TopicController, :delete
     # post "/topics", TopicController, :create
-    resources "/", ProductController
+    get "/", PageController, :index
+    resources "/products", ProductController
   end
 
   scope "/auth", DiscussWeb do
