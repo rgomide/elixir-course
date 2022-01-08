@@ -7,9 +7,10 @@ import Config
 # Run `mix help test` for more information.
 config :discuss, Discuss.Repo,
   username: "postgres",
-  password: "postgres",
-  database: "discuss_test#{System.get_env("MIX_TEST_PARTITION")}",
+  password: "sysdba",
+  database: "discuss_dev",
   hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 

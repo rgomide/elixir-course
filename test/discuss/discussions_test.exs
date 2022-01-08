@@ -3,111 +3,57 @@ defmodule Discuss.DiscussionsTest do
 
   alias Discuss.Discussions
 
-  describe "topics" do
-    alias Discuss.Discussions.Topic
+  describe "products" do
+    alias Discuss.Discussions.Product
 
     import Discuss.DiscussionsFixtures
 
     @invalid_attrs %{title: nil}
 
-    test "list_topics/0 returns all topics" do
-      topic = topic_fixture()
-      assert Discussions.list_topics() == [topic]
+    test "list_products/0 returns all products" do
+      product = product_fixture()
+      assert Discussions.list_products() == [product]
     end
 
-    test "get_topic!/1 returns the topic with given id" do
-      topic = topic_fixture()
-      assert Discussions.get_topic!(topic.id) == topic
+    test "get_product!/1 returns the product with given id" do
+      product = product_fixture()
+      assert Discussions.get_product!(product.id) == product
     end
 
-    test "create_topic/1 with valid data creates a topic" do
+    test "create_product/1 with valid data creates a product" do
       valid_attrs = %{title: "some title"}
 
-      assert {:ok, %Topic{} = topic} = Discussions.create_topic(valid_attrs)
-      assert topic.title == "some title"
+      assert {:ok, %Product{} = product} = Discussions.create_product(valid_attrs)
+      assert product.title == "some title"
     end
 
-    test "create_topic/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Discussions.create_topic(@invalid_attrs)
+    test "create_product/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Discussions.create_product(@invalid_attrs)
     end
 
-    test "update_topic/2 with valid data updates the topic" do
-      topic = topic_fixture()
+    test "update_product/2 with valid data updates the product" do
+      product = product_fixture()
       update_attrs = %{title: "some updated title"}
 
-      assert {:ok, %Topic{} = topic} = Discussions.update_topic(topic, update_attrs)
-      assert topic.title == "some updated title"
+      assert {:ok, %Product{} = product} = Discussions.update_product(product, update_attrs)
+      assert product.title == "some updated title"
     end
 
-    test "update_topic/2 with invalid data returns error changeset" do
-      topic = topic_fixture()
-      assert {:error, %Ecto.Changeset{}} = Discussions.update_topic(topic, @invalid_attrs)
-      assert topic == Discussions.get_topic!(topic.id)
+    test "update_product/2 with invalid data returns error changeset" do
+      product = product_fixture()
+      assert {:error, %Ecto.Changeset{}} = Discussions.update_product(product, @invalid_attrs)
+      assert product == Discussions.get_product!(product.id)
     end
 
-    test "delete_topic/1 deletes the topic" do
-      topic = topic_fixture()
-      assert {:ok, %Topic{}} = Discussions.delete_topic(topic)
-      assert_raise Ecto.NoResultsError, fn -> Discussions.get_topic!(topic.id) end
+    test "delete_product/1 deletes the product" do
+      product = product_fixture()
+      assert {:ok, %Product{}} = Discussions.delete_product(product)
+      assert_raise Ecto.NoResultsError, fn -> Discussions.get_product!(product.id) end
     end
 
-    test "change_topic/1 returns a topic changeset" do
-      topic = topic_fixture()
-      assert %Ecto.Changeset{} = Discussions.change_topic(topic)
-    end
-  end
-
-  describe "comments" do
-    alias Discuss.Discussions.Comment
-
-    import Discuss.DiscussionsFixtures
-
-    @invalid_attrs %{content: nil}
-
-    test "list_comments/0 returns all comments" do
-      comment = comment_fixture()
-      assert Discussions.list_comments() == [comment]
-    end
-
-    test "get_comment!/1 returns the comment with given id" do
-      comment = comment_fixture()
-      assert Discussions.get_comment!(comment.id) == comment
-    end
-
-    test "create_comment/1 with valid data creates a comment" do
-      valid_attrs = %{content: "some content"}
-
-      assert {:ok, %Comment{} = comment} = Discussions.create_comment(valid_attrs)
-      assert comment.content == "some content"
-    end
-
-    test "create_comment/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Discussions.create_comment(@invalid_attrs)
-    end
-
-    test "update_comment/2 with valid data updates the comment" do
-      comment = comment_fixture()
-      update_attrs = %{content: "some updated content"}
-
-      assert {:ok, %Comment{} = comment} = Discussions.update_comment(comment, update_attrs)
-      assert comment.content == "some updated content"
-    end
-
-    test "update_comment/2 with invalid data returns error changeset" do
-      comment = comment_fixture()
-      assert {:error, %Ecto.Changeset{}} = Discussions.update_comment(comment, @invalid_attrs)
-      assert comment == Discussions.get_comment!(comment.id)
-    end
-
-    test "delete_comment/1 deletes the comment" do
-      comment = comment_fixture()
-      assert {:ok, %Comment{}} = Discussions.delete_comment(comment)
-      assert_raise Ecto.NoResultsError, fn -> Discussions.get_comment!(comment.id) end
-    end
-
-    test "change_comment/1 returns a comment changeset" do
-      comment = comment_fixture()
-      assert %Ecto.Changeset{} = Discussions.change_comment(comment)
+    test "change_product/1 returns a product changeset" do
+      product = product_fixture()
+      assert %Ecto.Changeset{} = Discussions.change_product(product)
     end
   end
 end

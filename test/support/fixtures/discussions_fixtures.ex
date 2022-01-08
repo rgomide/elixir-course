@@ -5,30 +5,16 @@ defmodule Discuss.DiscussionsFixtures do
   """
 
   @doc """
-  Generate a topic.
+  Generate a product.
   """
-  def topic_fixture(attrs \\ %{}) do
-    {:ok, topic} =
+  def product_fixture(attrs \\ %{}) do
+    {:ok, product} =
       attrs
       |> Enum.into(%{
         title: "some title"
       })
-      |> Discuss.Discussions.create_topic()
+      |> Discuss.Discussions.create_product()
 
-    topic
-  end
-
-  @doc """
-  Generate a comment.
-  """
-  def comment_fixture(attrs \\ %{}) do
-    {:ok, comment} =
-      attrs
-      |> Enum.into(%{
-        content: "some content"
-      })
-      |> Discuss.Discussions.create_comment()
-
-    comment
+    product
   end
 end
