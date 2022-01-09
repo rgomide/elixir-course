@@ -3,6 +3,8 @@ defmodule Discuss.DiscussionsTest do
 
   alias Discuss.Discussions
 
+  @moduletag :discussions_test
+
   describe "products" do
     alias Discuss.Discussions.Product
 

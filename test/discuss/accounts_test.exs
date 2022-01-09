@@ -21,7 +21,7 @@ defmodule Discuss.AccountsTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{email: "some email"}
+      valid_attrs = %{email: "some email", provider: "github", token: "abcdef"}
 
       assert {:ok, %User{} = user} = Accounts.create_user(valid_attrs)
       assert user.email == "some email"

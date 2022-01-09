@@ -2,15 +2,20 @@ defmodule DiscussWeb.ProductControllerTest do
   use DiscussWeb.ConnCase
 
   import Discuss.DiscussionsFixtures
+  import Discuss.AccountsFixtures
+
+  @moduletag :product_controller_test
 
   @create_attrs %{title: "some title"}
   @update_attrs %{title: "some updated title"}
   @invalid_attrs %{title: nil}
 
+  setup [:reset_user_sequence, :create_user]
+
   describe "index" do
     test "lists all products", %{conn: conn} do
       conn = get(conn, Routes.product_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Products"
+      assert html_response(conn, 200) =~ "Products"
     end
   end
 
@@ -23,13 +28,13 @@ defmodule DiscussWeb.ProductControllerTest do
 
   describe "create product" do
     test "redirects to show when data is valid", %{conn: conn} do
+
       conn = post(conn, Routes.product_path(conn, :create), product: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.product_path(conn, :show, id)
+      assert redirected_to(conn) == Routes.product_path(conn, :index)
 
-      conn = get(conn, Routes.product_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Product"
+      conn = get(conn, Routes.product_path(conn, :index))
+      assert html_response(conn, 200) =~ "some title"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -52,9 +57,9 @@ defmodule DiscussWeb.ProductControllerTest do
 
     test "redirects when data is valid", %{conn: conn, product: product} do
       conn = put(conn, Routes.product_path(conn, :update, product), product: @update_attrs)
-      assert redirected_to(conn) == Routes.product_path(conn, :show, product)
+      assert redirected_to(conn) == Routes.product_path(conn, :index)
 
-      conn = get(conn, Routes.product_path(conn, :show, product))
+      conn = get(conn, Routes.product_path(conn, :index))
       assert html_response(conn, 200) =~ "some updated title"
     end
 
@@ -81,4 +86,15 @@ defmodule DiscussWeb.ProductControllerTest do
     product = product_fixture()
     %{product: product}
   end
+
+  defp create_user(_) do
+    user = user_fixture()
+    %{user: user}
+  end
+
+  defp reset_user_sequence(_) do
+    Discuss.Repo.query("ALTER SEQUENCE users_id_seq RESTART")
+    :ok
+  end
+
 end

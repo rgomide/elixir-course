@@ -11,7 +11,9 @@ defmodule Discuss.AccountsFixtures do
     {:ok, user} =
       attrs
       |> Enum.into(%{
-        email: "some email"
+        email: "admin@admin.com",
+        provider: "github",
+        token: "abcdef"
       })
       |> Discuss.Accounts.create_user()
 
