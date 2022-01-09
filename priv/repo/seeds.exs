@@ -9,3 +9,10 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Discuss.Discussions
+alias Discuss.Discussions.Product
+
+for n <- 1..10 do
+  Discussions.create_product(%{title: "Product #{n}"})
+end

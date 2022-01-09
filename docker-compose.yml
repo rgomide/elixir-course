@@ -1,11 +1,11 @@
 version: '3.6'
 
 services:
-  web:
+  channelspike_web:
     build:
       context: .
-      dockerfile: Dockerfile.dev
-    command: /bin/bash -c 'mix ecto.create && mix ecto.migrate && mix phx.server'
+      dockerfile: ./docker/development/Dockerfile.dev
+    command: /bin/bash -c 'mix ecto.create.migrate && mix phx.server'
     environment:
       MIX_ENV: dev
       DATABASE_URL: postgres://postgres:postgres@channelspike_db:5432/discuss_dev

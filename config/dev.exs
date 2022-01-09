@@ -2,9 +2,9 @@ import Config
 
 # Configure your database
 config :discuss, Discuss.Repo,
-url: System.get_env("DATABASE_URL"),
-show_sensitive_data_on_connection_error: true,
-pool_size: 10
+  url: System.get_env("DATABASE_URL"),
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
