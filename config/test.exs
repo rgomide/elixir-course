@@ -6,9 +6,9 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :discuss, Discuss.Repo,
-url: System.get_env("DATABASE_URL"),
-pool: Ecto.Adapters.SQL.Sandbox,
-pool_size: 10
+  url: "#{System.get_env("DATABASE_URL")}_test",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

@@ -7,10 +7,22 @@ This project is dockerized for development. The `docker-compose.yml` uses three 
 Main `docker-compose` commands:
 
   * Run project: `docker-compose up`;
-  * Execute dataseed: `docker-compose run channelspike_web mix run priv/repo/seeds.exs`;
-  * Run tests: `docker-compose run -e MIX_ENV=test channelspike_web mix test`. Make sure that you run `docker-compose up` or `docker-compose up -d` before.
+  * Execute dataseed: `docker-compose run channelspike_web mix run priv/repo/seeds.exs`.
 
 The application can be accessed on http://localhost:4000 and pgAdmin interface on http://localhost:5050. The pgAdmin email is `admin@admin.com` and password is `root`.
+
+# Testing
+
+To run tests, make sure that containers are running. You can run `docker-compose up` or `docker-compose up -d` before execute the tests.
+
+Test commands:
+
+  * Run all tests: `docker-compose run -e MIX_ENV=test channelspike_web mix test`;
+  * Run all tests in a given directory (e.g. `test/discuss_web/views`): `docker-compose run -e MIX_ENV=test channelspike_web mix test ./test/discuss_web/views/`;
+
+## References
+
+  * Official documentation: https://hexdocs.pm/phoenix/testing.html
 
 ## Learn more
 
