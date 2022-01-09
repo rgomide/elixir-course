@@ -1,5 +1,2 @@
-<h1>New Product</h1>
-
+<h5>New Product</h5>
 <%= render "form.html", Map.put(assigns, :action, Routes.product_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>

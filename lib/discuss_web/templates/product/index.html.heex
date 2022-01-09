@@ -4,10 +4,16 @@
 <%= for product <- @products do %>
   <li class="collection-item">
     <%= if @conn.assigns.user do %>
-      <%= link product.title, to: Routes.product_path(@conn, :show, product) %>
-      <div class="right">
-        <%= link "Edit", to: Routes.product_path(@conn, :edit, product) %>
-        <%= link "Delete", to: Routes.product_path(@conn, :delete, product), method: :delete %>
+      <div>
+        <%= link product.title, to: Routes.product_path(@conn, :show, product) %>
+        <div class="right">
+          <%= link to: Routes.product_path(@conn, :edit, product) do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+          <%= link to: Routes.product_path(@conn, :delete, product), method: :delete do %>
+            <i class="material-icons">delete</i>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </li>    
@@ -16,9 +22,9 @@
 
   
 <div class="fixed-action-btn">
-  <%= link to: Routes.product_path(@conn, :new), class: "btn-floating btn-large waves-efect waves-light red" do %>
+  <%= link to: Routes.product_path(@conn, :new), class: "btn-floating btn-large waves-efect waves-light green" do %>
     <i class="material-icons">add</i>
   <% end %>
 </div>
 
-<span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>
+<%= link "Back", class: "btn blue waves-effect", to: Routes.page_path(@conn, :index) %>
