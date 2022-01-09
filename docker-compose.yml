@@ -4,7 +4,7 @@ services:
   channelspike_web:
     build:
       context: .
-      dockerfile: ./docker/development/Dockerfile.dev
+      dockerfile: ./docker/development/Dockerfile
     command: /bin/bash -c 'mix ecto.create.migrate && mix phx.server'
     environment:
       MIX_ENV: dev
