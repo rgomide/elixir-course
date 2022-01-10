@@ -11,6 +11,8 @@ Main `docker-compose` commands:
 
 The application can be accessed on http://localhost:4000 and pgAdmin interface on http://localhost:5050. The pgAdmin email is `admin@admin.com` and password is `root`.
 
+Sometimes docker will be full of images. This is the command to clean everything: `docker images -a | grep ".*" | awk '{print $3}' | xargs docker rmi --force; docker volume rm $(docker volume ls -qf dangling=true)`
+
 # Testing
 
 To run tests, make sure that containers are running. You can run `docker-compose up` or `docker-compose up -d` before execute the tests.
@@ -31,3 +33,4 @@ Test commands:
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+ßß
